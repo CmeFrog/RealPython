@@ -1,3 +1,4 @@
 test/
 flask-hello-world/env/
 *.pyc
+sql/env
