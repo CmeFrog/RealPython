@@ -1,14 +1,11 @@
-# Create SQL CE database
-# First create 0 byte file (new.sdf) with UlttraEdit
-
+#Insert data into SQL CE table
 import adodbapi
 
 connStr = ("Provider=Microsoft.SQLSERVER.CE.OLEDB.3.5;Data Source={}".format("new.sdf"))
 conn = adodbapi.connect(connStr)
 dbCursor = conn.cursor()
-dbCursor.execute("""CREATE TABLE population
-	(city NVarchar(255), state NVarchar(255), population Integer)
-	""")
+dbCursor.execute("INSERT INTO population VALUES('New York City', 'NY', 8200000)")
+dbCursor.execute("INSERT INTO population VALUES('San Francisco', 'CA', 800000)")
 conn.commit()
 dbCursor.close()
 conn.close()
