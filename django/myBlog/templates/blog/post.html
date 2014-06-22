@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>myBlog: {{ single_post.title }}</title>
+	</head>
+	<body>
+		<h2>{{ single_post.title }}</h2>
+		<ul>
+			<p><em>{{ single_post.created_at }}</em></p>
+			<p>{{ single_post.content }}</p>
+			<p>Tag: {{ single_post.tag }}</p>
+			<p>Views: {{ single_post.views }}</p>
+			<br/>
+			{% if single_post.image %}
+				<p>
+					<img src="/media/{{single_post.image}}">
+				</p>
+			{% endif %}
+		</ul>
+		<p>Had enough? Return <a href="/blog">home</a>.<br/>
+	</body>
+</html>

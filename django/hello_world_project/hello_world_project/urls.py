@@ -18,11 +18,18 @@ urlpatterns = patterns('',
     #jtn1 url(r'^hello_world/$', 'hello_world.views.hello_view'),
     #jtn2 url(r'^hello_world/$', hello_view),
 
-    # uses specific imported view
-    url(r'^hello_world/about/$', about_view),
     # uses view linked in app dir urls.py
-    url(r'^hello_world/$', include('hello_world.urls')),
+    # routes both hello_world and hello_world/about
+    # Note that the regular expression below does not
+    # have a $ (end-of-string match character) but does include
+    # a trailing slash. Whenever Django encounters include(),
+    # it chops off whatever part of the URL matched up to that
+    # point and sends the remaining string to the included
+    # URLconf for further processing
+    url(r'^hello_world/?', include('hello_world.urls')),
+
     # uses view from imported views file
     url(r'^better/$', views.better_hello),
+    
     url(r'^$', include('hello_world.urls')),
 )
